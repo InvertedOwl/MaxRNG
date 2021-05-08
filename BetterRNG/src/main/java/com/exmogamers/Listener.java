@@ -84,7 +84,9 @@ public class Listener implements org.bukkit.event.Listener {
 
             if(itemHeld.containsEnchantment(Enchantment.LOOT_BONUS_MOBS)){
                 for (ItemStack droppedItem : event.getDrops()){
-                    droppedItem.setAmount(droppedItem.getAmount() + itemHeld.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS));
+                    if(droppedItem.getType() != Material.BOW) {
+                        droppedItem.setAmount(droppedItem.getAmount() + itemHeld.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS));
+                    }
                 }
             }
         }
